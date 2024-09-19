@@ -1,0 +1,83 @@
+# Unit Testing
+### Definition:
+- Testing a small piece of code
+    - A method or function
+    - Module or class
+    - Small group of related tests
+- Automated unit test:
+    - Designed by a human
+    - Runs without intervention
+    - Clear pass or fail
+    - Other devs can leverage your tests
+- Should run in memory
+    - No:
+        - Filesystem
+        - Database
+        - Network
+    - May need test that utilize these functions
+- Test cases
+    - Should exercise a unit of code
+    - Run each test case independently
+    - Several test cases can exist for one unit but should not be dependent
+- Test runner
+    - Program that executes test cases and reports results
+    - When flying solo, okay to use IDE
+    - When on team, utilize CI platform
+- Test Suite
+    - Collection of related test cases
+    - Separation of concerns: design a test case without worrying about test runnner/suite
+- Test fixture
+    - Preparation needed for one or more tests
+    - Associated cleanup actions
+    - Usually shared code that would repeat across tests in test suite
+- Three parts of a single unit test
+    - Arrange: set up object to be tested and collaborators
+    - Act: exercise the unit under test
+    - Assert: make claims about what happened
+### What is unit testing for?
+- Understand what to build
+    - Determine what to build early in the process.
+    - Talk to stake holders in different roles
+    - Those conversations may become tests
+- Document the units
+    - Tests specifies behavior of unit under test - helpful to future devs
+    - Demonstrates how original dev intended the code to be used
+    - Executable - should stay in sync with unit tests, if methods/locations change, test will fail
+- Design the units
+    - Loosely coupled units with high cohesion is good/more likely with unit testing
+    - Unit tests will exercise interface to unit, call methods, functions, check return values
+- Regression protection
+    - Unit tests will point out feature that regress and begin failing
+    - Due to granular tests, failed tests will point directly to issue
+- Limitations:
+    - Hard to write if units have too many dependencies: sign of "tight" coupling.
+    - Test scenarios may not be relevant to production
+        - Non-relevant test may not catch production-related bugs
+    - Unit tests to do not fin integration or non-functional problems
+        - Security, performance
+- Test-last process:
+    - Risk of untestable design
+    - Discover bugs late
+    - Tests are rushed
+- Test-first:
+    - Design is testable from the start
+    - Think through all important characteristics and test them
+    - Hard to predict all cases
+    - End up iterating test with code. Accept it.
+- Test-driven development:
+    - Write one test case - make it pass- refactor - repeat
+    - Interleave code and test, iterate both
+    - Takes discipline, refactoring takes skill
+- Automated build servers and CI:
+    - When working with unfamiliar code, get docs and test
+    - Make sure you don't break current code (regression test)
+    - Process:
+        - Pull from version control
+        - Run test and verify results before editing
+        - Run test before you push
+    - Build automation server:
+        - Detects changes from version control, pulls them
+        - Builds the code and runs tests
+        - Communicates results to devs
+        - If passing - may deploy into manual testing env
+    - Use frequent small committs (each member commits at least daily)

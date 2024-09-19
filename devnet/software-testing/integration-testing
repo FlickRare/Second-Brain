@@ -1,0 +1,77 @@
+# Integration Testing
+### Why do we need it?
+- Not all programmers think the same
+    - Causes clashes between modules developed by different devs
+- User requirements change, different stages of iteration
+- Database Issue
+- Interface Issue
+- Weak exception handling
+### What is Integration testing?
+- Another layer of programming
+- Combining unit tested modules one by one and testing
+- Exercises interfaces between modules
+- Happens in parallel with development
+### Different approaches
+- Top-Down
+    - Starts at top level and moves to lowest level code following control flow or architectural structure.
+    - Use stubs in this situation since top level is a calling programing
+    - Stubs will topically have hard coded output more complex situations requires more sophisticated stubs.
+    - Advantages: 
+        - Consistent
+        - Fast to write
+        - Fault isolation is easier
+        - Detects major flaws
+    - Disadvantages: 
+        - A lot of stubs
+        - Poor support for early release
+        - Basic functionality tested at end of cycle
+- Bottom-Up
+    - Opposite, starts with lowest level units and moves up following control flow or architectural structure.
+    - Use drivers: we have a good base of called programs, need to simulate calling components
+    - Advantages:
+        - Efficient
+        - Less time overall
+        - Test conditions easier to create
+    - Disadvantages:
+        - Need several drivers
+        - Data flow is tested late
+        - Poor support for early release
+        - Key interface defects are found late
+- Big Bang:
+    - Combine everything at once and test
+    - Challenging and risky, testing everything at once creates issues finding errors
+    - Advantages:
+        - Everything tested at once
+        - Convenient for small systems
+        - Saves testing time
+    - Disadvantages:
+        - A lot of delay before testing
+        - Difficult to trace failures
+        - Possibility of missing interface links
+        - Critical modules not prioritized
+- Sandwich (hybrid) approached:
+    - Three layers:
+        - Above target layer
+        - Target layer
+        - Below target layer
+    - Top-down and bottom-up tested in parallel, working towards target layer.
+    - Advantages:
+        - Both layers are tested in parallel
+    - Disadvantages: 
+        - High cost
+        - Big skill set
+        - Testing is not extensive 
+### How to accomplish integration testing:
+- Choose the module
+- Decide the type of integration test
+- Deploy modules and test
+- Perform functional and structural testing
+- Record, analyze report results
+- Repeat until system is tested and working
+### Best practices:
+- Focus on architecture of app
+- Identify each module
+- Check how data is communicated
+- Understand user requirements
+- Create multiple test conditions
+- Focus on one test conditions at a time
